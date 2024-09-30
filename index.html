@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Envelope + Letter (Open/Close on Click)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="envelope-wrapper">
+      <div class="envelope">
+        <div class="ribbon"></div> <!-- Pita di amplop -->
+        <div class="letter">
+          <div class="text">
+            <strong>Dear Boruku Asri 🎀</strong>
+            <p>
+              Hallo Boruuu! 🫰 Happy Girlfriend Day ya!
+
+              Aku mau bilang kalau aku senang banget bisa ketemu kamu. Maaf ya kalau kita baru bisa ketemu secara online
+              dulu. Doain biar kita bisa secepatnya ketemu yaa. Aku janji bakal jadi yang terbaik buat kamu, semoga kita
+              langgeng yaa tondii. <br>
+
+              Lopee you, Boruu! 💖
+
+
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="heart"></div>
+    </div>
+    <!-- Banyak love kecil yang bergerak -->
+    <div class="love" style="left: 10%; animation-duration: 4s;"></div>
+    <div class="love" style="left: 20%; animation-duration: 6s;"></div>
+    <div class="love" style="left: 30%; animation-duration: 5s;"></div>
+    <div class="love" style="left: 40%; animation-duration: 7s;"></div>
+    <div class="love" style="left: 50%; animation-duration: 4s;"></div>
+    <div class="love" style="left: 60%; animation-duration: 6s;"></div>
+    <div class="love" style="left: 70%; animation-duration: 5s;"></div>
+    <div class="love" style="left: 80%; animation-duration: 7s;"></div>
+    <div class="love" style="left: 90%; animation-duration: 4s;"></div>
+    <div class="love" style="left: 30%; animation-duration: 5s;"></div>
+    <div class="love" style="left: 40%; animation-duration: 7s;"></div>
+    <div class="love" style="left: 50%; animation-duration: 4s;"></div>
+    <div class="love" style="left: 60%; animation-duration: 6s;"></div>
+    <div class="love" style="left: 70%; animation-duration: 5s;"></div>
+    <div class="love" style="left: 80%; animation-duration: 7s;"></div>
+    <div class="love" style="left: 90%; animation-duration: 4s;"></div>
+  </div>
+
+  <!-- Tambahkan audio untuk lagu -->
+  <audio id="love-song" src="loves.mp3"></audio>
+
+  <script>
+    const envelope = document.querySelector('.envelope-wrapper');
+    const loveSong = document.getElementById('love-song');
+
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('flap');
+      if (envelope.classList.contains('flap')) {
+        // Mainkan lagu saat surat dibuka
+        loveSong.play();
+      } else {
+        // Hentikan lagu saat surat ditutup
+        loveSong.pause();
+        loveSong.currentTime = 0; // Reset lagu ke awal
+      }
+    });
+  </script>
+</body>
+
+</html>
