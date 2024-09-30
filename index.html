@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CSS Envelope + Letter (Open/Close on Click)</title>
+  <title>Untuk Borukuu</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -26,7 +26,9 @@
 
               Lopee you, Boruu! 💖
 
-
+              <br><br>
+              <span id="youtube-link" style="display:none;">Jika musik tidak diputar, kamu bisa mendengarkan lagunya di
+                <a href="https://youtu.be/cNGjD0VG4R8?si=Jt3JCN6WN__-l863" target="_blank">link ini</a>.</span>
             </p>
           </div>
         </div>
@@ -43,13 +45,6 @@
     <div class="love" style="left: 70%; animation-duration: 5s;"></div>
     <div class="love" style="left: 80%; animation-duration: 7s;"></div>
     <div class="love" style="left: 90%; animation-duration: 4s;"></div>
-    <div class="love" style="left: 30%; animation-duration: 5s;"></div>
-    <div class="love" style="left: 40%; animation-duration: 7s;"></div>
-    <div class="love" style="left: 50%; animation-duration: 4s;"></div>
-    <div class="love" style="left: 60%; animation-duration: 6s;"></div>
-    <div class="love" style="left: 70%; animation-duration: 5s;"></div>
-    <div class="love" style="left: 80%; animation-duration: 7s;"></div>
-    <div class="love" style="left: 90%; animation-duration: 4s;"></div>
   </div>
 
   <!-- Tambahkan audio untuk lagu -->
@@ -58,16 +53,25 @@
   <script>
     const envelope = document.querySelector('.envelope-wrapper');
     const loveSong = document.getElementById('love-song');
+    const youtubeLink = document.getElementById('youtube-link');
 
     envelope.addEventListener('click', () => {
       envelope.classList.toggle('flap');
       if (envelope.classList.contains('flap')) {
         // Mainkan lagu saat surat dibuka
-        loveSong.play();
+        const playPromise = loveSong.play();
+
+        // Jika audio gagal diputar, tampilkan link YouTube
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            youtubeLink.style.display = 'inline'; // Tampilkan link YouTube jika gagal
+          });
+        }
       } else {
         // Hentikan lagu saat surat ditutup
         loveSong.pause();
         loveSong.currentTime = 0; // Reset lagu ke awal
+        youtubeLink.style.display = 'none'; // Sembunyikan link YouTube saat ditutup
       }
     });
   </script>
