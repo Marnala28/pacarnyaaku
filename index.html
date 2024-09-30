@@ -56,13 +56,14 @@
   <audio id="love-song" src="loves.mp3"></audio>
 
   <script>
+    const envelope = document.querySelector('.envelope-wrapper');
+    const loveSong = document.getElementById('love-song');
+
     envelope.addEventListener('click', () => {
       envelope.classList.toggle('flap');
       if (envelope.classList.contains('flap')) {
         // Mainkan lagu saat surat dibuka
-        loveSong.play().catch((e) => {
-          console.error("Audio play error: ", e);
-        });
+        loveSong.play();
       } else {
         // Hentikan lagu saat surat ditutup
         loveSong.pause();
